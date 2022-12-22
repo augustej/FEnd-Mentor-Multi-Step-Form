@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css" />
+  <title><h1>Frontend Mentor | Multi-step form</h1></title>
+
+</head>
+<body>
+  
+  <header>
+    <nav class="sidebar">
+      <ol>
+        <li>
+          <p>Step 1</p>
+          <h3>Your info</h3>
+        </li>
+        <li>
+          <p>Step 2</p>
+          <h3>Select plan</h3>
+        </li>
+        <li>
+          <p>Step 3</p>
+          <h3>Add-ons</h3>
+        </li>
+        <li>
+          <p>Step 4</p>
+          <h3>Summary</h3>
+        </li>
+      </ol>
+    </nav>
+  </header>
+  <main>
+    <form>
+      <section class="step1">
+        <h2>Personal info</h2>
+        <p>Please provide your name, email address, and phone number.</p>
+        
+        <label for="name">Name</label>
+        <input name="name" id="name" type="text" placeholder="e.g. Stephen King"/>
+        <label for="email">Email Address</label>
+        <input name="email" id="email" type="email" placeholder="e.g. stephenking@lorem.com"/>
+        <label for="phone">Phone Number</label>
+        <input name="phone" id="phone" type="tel" placeholder="e.g. +1 234 567 890"/>
+    
+      </section>
+
+      <section class="step2">
+        <h2>Select your plan</h2>
+        <p>You have the option of monthly or yearly billing.</p>
+        
+        <ul class="plans">
+          <li>
+            <i class="icon"></i>
+            <h3>Arcade</h3>
+            <p>$9/mo</p>
+          </li>
+          <li>
+            <i class="icon"></i>
+            <h3>Advanced</h3>
+            <p>$12/mo</p>
+          </li>
+          <li>
+            <i class="icon"></i>
+            <h3>Pro</h3>
+            <p>$15/mo</p>
+          </li>
+        </ul>
+        <div class="billing">
+          <p>Monthly</p>
+          <div class="toggle"></div>
+          <p>Yearly</p>
+        </div>
+    
+      </section>
+
+      <section class="step3">
+        <h2>Pick add-ons</h2>
+        <p>Add-ons help enhance your gaming experience.</p>
+        
+        <div class="add-ons--input">
+          <input type="checkbox" name="add-on" value="online-service" id="online-service"/>
+          <label for="online-service">
+            <h3>Online service</h3>
+            <p>Access to multiplayer games</p>
+          </label>
+          <p>+$10/yr</p>
+        </div>
+        <div class="add-ons--input">
+          <input type="checkbox" name="add-on" value="larger-storage" id="larger-storage"/>
+          <label for="larger-storage">
+            <h3>Larger storage</h3>
+            <p>Extra 1TB of cloud service</p>
+          </label>
+          <p>+$20/yr</p>
+        </div>
+        <div class="add-ons--input">
+          <input type="checkbox" name="add-on" value="customizable-profile" id="customizable-profile"/>
+          <label for="customizable-profile" >
+            <h3>Customizable profile</h3>
+            <p>Custom theme on your profile</p>
+          </label>
+          <p>+$20/yr</p>
+        </div>
+        
+      </section>
+
+      <section class="step4">
+        <h2>Finishing up</h2>
+        <p>Double-check everything looks OK before confirming.</p>
+        <div class="step4--table">
+          <ul>
+            <li class="plan">
+              <div class="plan-type">
+                <h3>Arcade 
+                  <span class="plan--billing">(Yearly)</span>
+                </h3>
+                <button class="change-plan" type="button">Change</button>
+              </div>
+              <p class="plan-price">$90/yr</p>
+            </li>
+            <li class="add-on">
+              <h3>Online service</h3>
+              <p>+$10/yr</p>
+            </li>
+            <li class="add-on">
+              <h3>Larger storage</h3>
+              <p>+$20/yr</p>
+            </li>
+            <li class="total-price">
+              <h3>Total (per year)</h3>
+              <p>$120/yr</p>
+            </li>
+          </ul>
+          <button class="confirm-btn">Confirm</button>
+
+        </div>
+      </section>
+      <section class="step5">
+        <i>ICON</i>
+        <h2>Thank you!</h2>
+        <p>Thanks for confirming your subscription! We hope you have fun 
+          using our platform. If you ever need support, please feel free 
+          to email us at support@loremgaming.com.</p>
+      </section>
+
+      <div class="buttons">
+        <button class="previous" type="button">Go Back</button>
+        <button class="next" type="button">Next Step</button>
+      </div>
+    </form>
+  </main>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
