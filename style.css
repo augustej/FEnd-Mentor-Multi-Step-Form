@@ -27,7 +27,7 @@ body {
   font-family: Ubuntu-regular;
   background-color: hsl(231deg, 100%, 99%);
   padding: 8rem 0;
-  max-width: 1000px;
+  max-width: 975px;
   margin: 0 auto;
 }
 
@@ -38,8 +38,15 @@ body {
   display: flex;
   padding: 1rem;
 }
+.content-container main {
+  width: 100%;
+}
 
-.step2, .step3, .step4, .step5 {
+.step3.hidden,
+.step5.hidden,
+.step1.hidden,
+.step2.hidden,
+.step4.hidden, .monthly-price {
   display: none;
 }
 
@@ -54,7 +61,7 @@ body {
 }
 .sidebar nav {
   z-index: 1;
-  padding: 1rem 2rem 2.5rem;
+  padding: 0.5rem 2rem 2.5rem;
 }
 .sidebar ol {
   list-style: none;
@@ -77,6 +84,9 @@ body {
   text-align: center;
   padding: 0.3rem;
 }
+.sidebar .sidebar--li.active:before {
+  background: lightblue;
+}
 .sidebar .sidebar--li p {
   color: hsl(228deg, 100%, 84%);
   text-transform: uppercase;
@@ -92,60 +102,56 @@ body {
 }
 
 form {
-  padding: 2rem 6rem;
+  padding: 2rem 5.75rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  color: hsl(213deg, 96%, 18%);
 }
 form h2 {
   font-size: 2rem;
-  margin: 0.5rem 0 1rem;
+  margin: 0.25rem 0 1rem;
   font-family: Ubuntu-bold;
   letter-spacing: 0.05rem;
 }
 form section > p {
   color: hsl(231deg, 11%, 63%);
   font-size: 1.1rem;
-  margin-bottom: 3rem;
-}
-form input {
-  width: 100%;
-  padding: 0.75rem;
-  border-radius: 10px;
-  border: 1px solid hsl(229deg, 24%, 87%);
-  margin: 0.5rem 0 1rem;
-  font-size: 1rem;
-  font-family: Ubuntu-medium;
-}
-form input::-moz-placeholder {
-  color: hsl(231deg, 11%, 63%);
-}
-form input:-ms-input-placeholder {
-  color: hsl(231deg, 11%, 63%);
-}
-form input::placeholder {
-  color: hsl(231deg, 11%, 63%);
-}
-form label {
-  color: hsl(213deg, 96%, 18%);
+  margin-bottom: 2.25rem;
 }
 
 .buttons {
-  padding-top: 5rem;
+  padding-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   margin: 0;
 }
-.buttons .previous {
+.buttons > * {
+  font-size: 1rem;
   border: none;
+  letter-spacing: 0.05rem;
+  display: none;
+}
+.buttons .previous {
+  padding: 1rem 0;
   background: none;
   color: hsl(231deg, 11%, 63%);
   font-family: Ubuntu-medium;
 }
-.buttons .next {
-  padding: 1rem;
+.buttons .next, .buttons .confirm-btn {
+  padding: 1rem 1.5rem;
   border-radius: 10px;
-  border: none;
   background-color: hsl(213deg, 96%, 18%);
   color: hsl(0deg, 0%, 100%);
-  font-family: Ubuntu-medium;
+  margin-left: auto;
+}
+.buttons .confirm-btn {
+  background-color: hsl(243deg, 100%, 62%);
+}
+.buttons .visible {
+  display: block;
 }
 
 .attribution {
@@ -156,4 +162,202 @@ form label {
   text-decoration: none;
   color: hsl(213deg, 96%, 18%);
   font-family: Ubuntu-medium;
+}
+
+.step1 div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.step1 input {
+  flex-basis: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid hsl(229deg, 24%, 87%);
+  margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+  font-family: Ubuntu-medium;
+}
+.step1 input::-moz-placeholder {
+  color: hsl(231deg, 11%, 63%);
+}
+.step1 input:-ms-input-placeholder {
+  color: hsl(231deg, 11%, 63%);
+}
+.step1 input::placeholder {
+  color: hsl(231deg, 11%, 63%);
+}
+.step1 input:focus {
+  outline: 1px solid hsl(243deg, 100%, 62%);
+}
+.step1 input.error-msg {
+  border: 1px solid red;
+}
+.step1 label {
+  color: hsl(213deg, 96%, 18%);
+}
+.step1 .error-msg-text {
+  color: red;
+}
+
+.step2 .plans {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.step2 .plans li {
+  border: 1px solid hsl(229deg, 24%, 87%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 33%;
+  padding: 1rem;
+  gap: 0.4rem;
+}
+.step2 .plans li img {
+  margin: 0 0 2.5rem;
+  max-width: 2.5rem;
+}
+.step2 .plans li h3 {
+  font-family: Ubuntu-medium;
+}
+.step2 .plans li .monthly-price, .step2 .plans li .yearly-price {
+  color: hsl(231deg, 11%, 63%);
+}
+.step2 .plans li > *:last-child {
+  font-size: 0.85rem;
+}
+.step2 .billing {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: hsl(231deg, 100%, 99%);
+  box-shadow: 0px 1px 5px 1px hsl(217deg, 100%, 97%);
+  padding: 1rem;
+  gap: 1rem;
+}
+.step2 .billing p {
+  color: hsl(231deg, 11%, 63%);
+  font-family: Ubuntu-medium;
+}
+.step2 .billing .toggle {
+  width: 40px;
+  height: 20px;
+  background-color: hsl(213deg, 96%, 18%);
+  border-radius: 30px;
+  position: relative;
+}
+.step2 .billing .toggle .toggle--bubble {
+  width: 12.5px;
+  height: 12.5px;
+  background-color: hsl(0deg, 0%, 100%);
+  position: absolute;
+  right: 3.75px;
+  top: 3.75px;
+  border-radius: 50%;
+}
+
+.step3 .add-ons--input {
+  display: flex;
+  border: 1px solid hsl(229deg, 24%, 87%);
+  border-radius: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.step3 .add-ons--input label {
+  margin-right: auto;
+}
+.step3 .add-ons--input label h3 {
+  font-family: Ubuntu-medium;
+}
+.step3 .add-ons--input label p {
+  color: hsl(231deg, 11%, 63%);
+  margin-top: 0.25rem;
+}
+.step3 .add-ons--input input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid hsl(229deg, 24%, 87%);
+  border-radius: 3px;
+}
+.step3 .add-ons--input p {
+  color: hsl(243deg, 100%, 62%);
+}
+
+.step4 .colored-table-part {
+  list-style: none;
+  padding: 1.5rem;
+  box-shadow: 0px 1px 5px 2px hsl(217deg, 100%, 97%);
+  border-radius: 10px;
+  background-color: hsl(231deg, 100%, 99%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.step4 .colored-table-part > * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.step4 .colored-table-part > *:first-child {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsl(229deg, 24%, 87%);
+}
+.step4 .colored-table-part .plan h3 {
+  font-family: Ubuntu-medium;
+  font-size: 1.2rem;
+}
+.step4 .colored-table-part .plan p {
+  font-family: Ubuntu-bold;
+  font-size: 1.2rem;
+}
+.step4 .colored-table-part .change-plan {
+  border: none;
+  background-color: transparent;
+  color: hsl(231deg, 11%, 63%);
+  text-decoration: underline;
+  font-size: 1rem;
+  padding-top: 0.2rem;
+}
+.step4 .colored-table-part .add-on h3 {
+  color: hsl(231deg, 11%, 63%);
+  font-size: 1rem;
+}
+.step4 .colored-table-part .add-on p {
+  font-family: Ubuntu-medium;
+}
+.step4 .total-price {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+.step4 .total-price h3 {
+  color: hsl(231deg, 11%, 63%);
+  font-size: 1rem;
+}
+.step4 .total-price p {
+  color: hsl(243deg, 100%, 62%);
+  font-family: Ubuntu-bold;
+  font-size: 1.5rem;
+}
+
+.step5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.step5 img {
+  max-width: 100px;
+  margin: 10rem auto 1.5rem;
 }/*# sourceMappingURL=style.css.map */
