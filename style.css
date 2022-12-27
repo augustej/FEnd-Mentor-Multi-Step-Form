@@ -25,56 +25,72 @@
 body {
   font-size: 16px;
   font-family: Ubuntu-regular;
-  background-color: hsl(231deg, 100%, 99%);
-  padding: 8rem 0;
   max-width: 975px;
   margin: 0 auto;
+  background-color: hsl(217deg, 100%, 97%);
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .content-container {
-  background-color: hsl(0deg, 0%, 100%);
-  border-radius: 10px;
-  box-shadow: 1px 2px 10px 2px hsl(229deg, 24%, 87%);
-  display: flex;
-  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5fr;
+  background-color: hsl(217deg, 100%, 97%);
+}
+.content-containerheader {
+  grid-column: 1/2;
+  grid-row: 1/3;
 }
 .content-container main {
-  width: 100%;
+  margin: 0 1rem;
+  z-index: 20;
+  grid-column: 1/2;
+  grid-row: 2/6;
 }
 
 .step3.hidden,
 .step5.hidden,
 .step1.hidden,
 .step2.hidden,
-.step4.hidden, .monthly-price {
+.step4.hidden,
+.monthly-price.hidden,
+.yearly-price.hidden {
   display: none;
 }
 
-.sidebar {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-}
-.sidebar nav, .sidebar img {
-  grid-column: 1/2;
-  grid-row: 1/2;
+.sidebar .bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(./assets/images/bg-sidebar-mobile.svg);
+  height: 175px;
+  width: 100%;
+  background-size: cover;
+  z-index: 0;
+  background-repeat: no-repeat;
 }
 .sidebar nav {
+  margin: 1rem;
   z-index: 1;
-  padding: 0.5rem 2rem 2.5rem;
 }
 .sidebar ol {
+  justify-content: center;
+  gap: 1rem;
+  display: flex;
   list-style: none;
   counter-reset: item;
 }
 .sidebar .sidebar--li {
+  z-index: 2;
   display: flex;
   counter-increment: item;
   color: hsl(0deg, 0%, 100%);
-  margin: 1.75rem auto;
+  margin: 1rem 0;
 }
 .sidebar .sidebar--li:before {
-  margin-right: 1.5rem;
   content: counter(item);
   border: 1px solid hsl(228deg, 100%, 84%);
   border-radius: 100%;
@@ -85,64 +101,66 @@ body {
   padding: 0.3rem;
 }
 .sidebar .sidebar--li.active:before {
+  color: black;
   background: lightblue;
 }
 .sidebar .sidebar--li p {
-  color: hsl(228deg, 100%, 84%);
-  text-transform: uppercase;
-  margin-bottom: 0.2rem;
-  font-size: 0.8rem;
+  display: none;
 }
 .sidebar .sidebar--li h3 {
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.1rem;
-  font-family: Ubuntu-medium;
+  display: none;
 }
 
 form {
-  padding: 2rem 5.75rem 0rem;
+  background-color: hsl(0deg, 0%, 100%);
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 1px 5px 10px 1px hsl(229deg, 24%, 87%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: 100%;
   color: hsl(213deg, 96%, 18%);
 }
 form h2 {
-  font-size: 2rem;
-  margin: 0.25rem 0 1rem;
+  font-size: 1.5rem;
+  margin: 0rem 0 1rem;
   font-family: Ubuntu-bold;
-  letter-spacing: 0.05rem;
 }
 form section > p {
   color: hsl(231deg, 11%, 63%);
   font-size: 1.1rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .buttons {
-  padding-bottom: 1rem;
+  background-color: hsl(0deg, 0%, 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 0;
 }
 .buttons > * {
+  margin: 1rem;
   font-size: 1rem;
   border: none;
   letter-spacing: 0.05rem;
   display: none;
 }
 .buttons .previous {
-  padding: 1rem 0;
+  padding: 0.85rem 0;
   background: none;
   color: hsl(231deg, 11%, 63%);
   font-family: Ubuntu-medium;
 }
+.buttons .previous:hover {
+  color: hsl(213deg, 96%, 18%);
+}
 .buttons .next, .buttons .confirm-btn {
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
+  padding: 0.85rem 1.25rem;
+  border-radius: 5px;
   background-color: hsl(213deg, 96%, 18%);
   color: hsl(0deg, 0%, 100%);
   margin-left: auto;
@@ -150,17 +168,21 @@ form section > p {
 .buttons .confirm-btn {
   background-color: hsl(243deg, 100%, 62%);
 }
+.buttons .confirm-btn:hover {
+  background-color: hsla(243deg, 100%, 62%, 0.6);
+}
 .buttons .visible {
   display: block;
 }
 
 .attribution {
-  margin: 5rem auto;
+  font-size: 0.5rem;
+  margin: 0.5rem auto;
   text-align: center;
 }
 .attribution a {
   text-decoration: none;
-  color: hsl(213deg, 96%, 18%);
+  color: hsl(243deg, 100%, 62%);
   font-family: Ubuntu-medium;
 }
 
@@ -169,10 +191,13 @@ form section > p {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.step1 div:last-child > input {
+  margin-bottom: 0rem;
+}
 .step1 input {
   flex-basis: 100%;
-  padding: 1rem;
-  border-radius: 10px;
+  padding: 0.5rem;
+  border-radius: 5px;
   border: 1px solid hsl(229deg, 24%, 87%);
   margin: 0.5rem 0 1rem;
   font-size: 1rem;
@@ -202,33 +227,46 @@ form section > p {
 
 .step2 .plans {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   justify-content: space-between;
 }
 .step2 .plans li {
   border: 1px solid hsl(229deg, 24%, 87%);
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-basis: 33%;
   padding: 1rem;
-  gap: 0.4rem;
+  gap: 0.2rem;
+  list-style: none;
 }
 .step2 .plans li img {
-  margin: 0 0 2.5rem;
+  float: left;
+  margin: 0 1rem 0 0;
   max-width: 2.5rem;
 }
 .step2 .plans li h3 {
   font-family: Ubuntu-medium;
+  font-size: 1rem;
 }
 .step2 .plans li .monthly-price, .step2 .plans li .yearly-price {
   color: hsl(231deg, 11%, 63%);
-}
-.step2 .plans li > *:last-child {
+  margin: 0.25rem 0;
   font-size: 0.85rem;
 }
+.step2 .plans li > *:last-child {
+  color: hsl(213deg, 96%, 18%);
+  font-size: 0.85rem;
+  margin: 0rem 3.5rem;
+}
+.step2 .plans li:hover {
+  cursor: pointer;
+  border-color: hsl(243deg, 100%, 62%);
+}
+.step2 .plans li.chosen-plan {
+  background-color: hsl(231deg, 100%, 99%);
+  border-color: hsl(243deg, 100%, 62%);
+}
 .step2 .billing {
-  margin: 2rem auto;
+  margin: 1rem auto 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,9 +292,18 @@ form section > p {
   height: 12.5px;
   background-color: hsl(0deg, 0%, 100%);
   position: absolute;
-  right: 3.75px;
   top: 3.75px;
   border-radius: 50%;
+  transition: right 0.5s;
+}
+.step2 .billing .toggle .toggle--bubble:hover {
+  cursor: pointer;
+}
+.step2 .billing .toggle .toggle--bubble.Monthly {
+  right: 25px;
+}
+.step2 .billing .toggle .toggle--bubble.Yearly {
+  right: 3.75px;
 }
 
 .step3 .add-ons--input {
@@ -265,19 +312,44 @@ form section > p {
   border-radius: 10px;
   justify-content: flex-start;
   align-items: center;
-  padding: 1.25rem;
+  padding: 0.5rem;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+.step3 .add-ons--input:hover {
+  cursor: pointer;
+  border-color: hsl(243deg, 100%, 62%);
+}
+.step3 .add-ons--input > *:hover {
+  cursor: pointer;
 }
 .step3 .add-ons--input label {
   margin-right: auto;
 }
 .step3 .add-ons--input label h3 {
   font-family: Ubuntu-medium;
+  font-size: 0.95rem;
 }
 .step3 .add-ons--input label p {
   color: hsl(231deg, 11%, 63%);
   margin-top: 0.25rem;
+  font-size: 0.8rem;
+}
+.step3 .add-ons--input.chosen-addon {
+  background-color: hsl(231deg, 100%, 99%);
+  border-color: hsl(243deg, 100%, 62%);
+}
+.step3 .add-ons--input.chosen-addon input {
+  border: 1px solid hsl(243deg, 100%, 62%);
+  background-color: hsl(243deg, 100%, 62%);
+  position: relative;
+}
+.step3 .add-ons--input.chosen-addon input::before {
+  content: url(./assets/images/icon-checkmark.svg);
+  color: white;
+  padding: 2px 3px;
+  position: absolute;
+  top: 0;
 }
 .step3 .add-ons--input input {
   -webkit-appearance: none;
@@ -290,17 +362,18 @@ form section > p {
 }
 .step3 .add-ons--input p {
   color: hsl(243deg, 100%, 62%);
+  font-size: 0.8rem;
 }
 
 .step4 .colored-table-part {
   list-style: none;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0px 1px 5px 2px hsl(217deg, 100%, 97%);
   border-radius: 10px;
   background-color: hsl(231deg, 100%, 99%);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .step4 .colored-table-part > * {
   display: flex;
@@ -308,16 +381,16 @@ form section > p {
   align-items: center;
 }
 .step4 .colored-table-part > *:first-child {
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid hsl(229deg, 24%, 87%);
 }
 .step4 .colored-table-part .plan h3 {
   font-family: Ubuntu-medium;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .step4 .colored-table-part .plan p {
   font-family: Ubuntu-bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .step4 .colored-table-part .change-plan {
   border: none;
@@ -326,6 +399,9 @@ form section > p {
   text-decoration: underline;
   font-size: 1rem;
   padding-top: 0.2rem;
+}
+.step4 .colored-table-part .change-plan:hover {
+  color: hsl(243deg, 100%, 62%);
 }
 .step4 .colored-table-part .add-on h3 {
   color: hsl(231deg, 11%, 63%);
@@ -338,7 +414,7 @@ form section > p {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem;
+  padding: 2rem 1rem 0;
 }
 .step4 .total-price h3 {
   color: hsl(231deg, 11%, 63%);
@@ -347,7 +423,7 @@ form section > p {
 .step4 .total-price p {
   color: hsl(243deg, 100%, 62%);
   font-family: Ubuntu-bold;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .step5 {
@@ -358,6 +434,163 @@ form section > p {
   text-align: center;
 }
 .step5 img {
-  max-width: 100px;
-  margin: 10rem auto 1.5rem;
+  max-width: 55px;
+  margin: 2rem auto 1.5rem;
+}
+.step5 p {
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+@media (min-width: 850px) {
+  body {
+    padding: 8rem 0;
+    background-color: hsl(231deg, 100%, 99%);
+  }
+  .content-container {
+    display: flex;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 2px 10px 2px hsl(229deg, 24%, 87%);
+    background-color: hsl(0deg, 0%, 100%);
+  }
+  .content-container main {
+    display: block;
+    margin: 0;
+    z-index: 20;
+    width: 100%;
+    padding: 0;
+    background-color: hsl(0deg, 0%, 100%);
+  }
+  form {
+    box-shadow: none;
+    padding: 2rem 5.5rem 0rem;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  form h2 {
+    font-size: 2rem;
+    margin: 0.25rem 0 1rem;
+    letter-spacing: 0.05rem;
+  }
+  form section > p {
+    margin-bottom: 2.25rem;
+  }
+  .buttons {
+    position: static;
+    padding: 0 0 1rem;
+  }
+  .buttons .next, .buttons .confirm-btn {
+    border-radius: 10px;
+  }
+  .sidebar {
+    display: grid;
+    grid-template-columns: 280px;
+    grid-template-rows: 1fr;
+  }
+  .sidebar .bg-img {
+    position: static;
+    background-image: url(./assets/images/bg-sidebar-desktop.svg);
+    height: 575px;
+    border-radius: 10px;
+  }
+  .sidebar nav, .sidebar .bg-img {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .sidebar nav {
+    margin: 0;
+    padding: 0.5rem 2rem 2.5rem;
+  }
+  .sidebar ol {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .sidebar .sidebar--li:before {
+    margin-right: 1.5rem;
+  }
+  .sidebar .sidebar--li p {
+    display: block;
+    color: hsl(228deg, 100%, 84%);
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+  .sidebar .sidebar--li h3 {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    font-family: Ubuntu-medium;
+  }
+  .step1 input {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .step2 .plans {
+    gap: 1rem;
+    flex-direction: row;
+  }
+  .step2 .plans li {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33%;
+  }
+  .step2 .plans li img {
+    margin: 0 0 2.5rem;
+  }
+  .step2 .plans li .monthly-price, .step2 .plans li .yearly-price {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .step2 .plans li > *:last-child {
+    margin: 0rem;
+  }
+  .step2 .billing {
+    margin: 2rem auto;
+  }
+  .step3 .add-ons--input {
+    padding: 1.25rem;
+  }
+  .step3 .add-ons--input label {
+    margin-right: auto;
+  }
+  .step3 .add-ons--input label h3 {
+    font-size: 1rem;
+  }
+  .step3 .add-ons--input label p {
+    font-size: 1rem;
+  }
+  .step3 .add-ons--input p {
+    font-size: 1rem;
+  }
+  .step4 .colored-table-part {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .step4 .colored-table-part h3 {
+    font-size: 1.2rem;
+  }
+  .step4 .colored-table-part .plan p {
+    font-size: 1.2rem;
+  }
+  .step4 .colored-table-part > *:first-child {
+    padding-bottom: 1.5rem;
+  }
+  .step4 .total-price {
+    padding: 1.5rem;
+  }
+  .step4 .total-price p {
+    font-size: 1.5rem;
+  }
+  .step5 p {
+    padding: 0 1rem;
+  }
+  .step5 img {
+    max-width: 100px;
+    margin: 10rem auto 1.5rem;
+  }
 }/*# sourceMappingURL=style.css.map */
