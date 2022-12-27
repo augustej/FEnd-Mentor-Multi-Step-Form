@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: (https://augustej.github.io/FEnd-Mentor-Multistep-Form/)
+- Live Site URL: (https://augustej.github.io/FEnd-Mentor-Multi-Step-Form/)
 
 ## My process
 
