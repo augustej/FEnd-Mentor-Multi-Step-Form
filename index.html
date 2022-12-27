@@ -67,7 +67,7 @@
         <p>You have the option of monthly or yearly billing.</p>
         
         <ul class="plans" role="radiogroup">
-          <li class="chosen-plan" onclick="plan.chooseplan()" onkeypress="plan.chooseplan()" role="radio" aria-checked=“true” tabindex="0">
+          <li class="chosen-plan" onclick="plan.chooseplan()" onkeypress="plan.chooseplan()" role="radio" aria-checked=true tabindex="0">
             <img src="./assets/images/icon-arcade.svg" alt="" />
             <h3>Arcade</h3>
             <p class="monthly-price plan-price">$9/mo</p>
@@ -142,18 +142,20 @@
         <div>
           <ul>
 
-            <div class="colored-table-part">
-              <li class="plan">
-                <div class="plan-type">
-                  <h3 class="plan--name"><span class="plan--billing"></span>
-                  </h3>
-                  <button class="change-plan" type="button" 
-                  onclick="btn.buttonClicked('previous'); btn.buttonClicked('previous')">
-                  Change</button>
-                </div>
-                <p class="plan--price add-to-total"></p>
-              </li>
-            </div>
+            <li>
+              <ul class="colored-table-part">
+                <li class="plan">
+                  <div class="plan-type">
+                    <h3 class="plan--name"><span class="plan--billing"></span>
+                    </h3>
+                    <button class="change-plan" type="button" 
+                    onclick="btn.buttonClicked('previous'); btn.buttonClicked('previous')">
+                    Change</button>
+                  </div>
+                  <p class="plan--price add-to-total"></p>
+                </li>
+              </ul>
+            </li>
             
             <li class="total-price">
               <h3>Total <span class="total-billing-time"></span></h3>

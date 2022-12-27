@@ -424,6 +424,10 @@ form{
 }
 
 .step4{
+    & li{
+        list-style: none;
+
+    }
 
     & .colored-table-part{
         list-style: none;
@@ -520,7 +524,6 @@ form{
 @media (min-width:850px){
     body{
         padding: 8rem 0;
-        background-color: $Alabaster;
 
     }
     .content-container{
@@ -663,6 +666,7 @@ form{
     .step4{
 
         & .colored-table-part{
+            list-style: none;
             gap:1.5rem;
             padding: 1.5rem;
             & h3{

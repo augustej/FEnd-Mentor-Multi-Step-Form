@@ -365,6 +365,9 @@ form section > p {
   font-size: 0.8rem;
 }
 
+.step4 li {
+  list-style: none;
+}
 .step4 .colored-table-part {
   list-style: none;
   padding: 1rem;
@@ -445,7 +448,6 @@ form section > p {
 @media (min-width: 850px) {
   body {
     padding: 8rem 0;
-    background-color: hsl(231deg, 100%, 99%);
   }
   .content-container {
     display: flex;
@@ -568,6 +570,7 @@ form section > p {
     font-size: 1rem;
   }
   .step4 .colored-table-part {
+    list-style: none;
     gap: 1.5rem;
     padding: 1.5rem;
   }
